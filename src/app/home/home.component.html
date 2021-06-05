@@ -1,0 +1,44 @@
+<!-- <p>home works!</p> -->
+
+
+<!-- <button (click)="getusers()">get users</button> -->
+
+
+<div class="display">
+  <div class="search">
+    <!-- <form #userform="ngForm" (ngSubmit)="submitform(userform)">
+      <input type="text" placeholder="Search user name" ngModel name="userName">
+    </form> -->
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search..." name="search" [(ngModel)]="search">
+    </div>
+  </div>
+
+
+
+
+
+  <div class="listings">
+    <ul class="list-unstyled" *ngFor="let user of result | filter:search">
+      <li>
+        <div class="wholeprof">
+          <img src="{{user.avatar_url}}"> <span>{{user.login}}</span>
+        </div>
+      </li>
+      <li><b>Profile URL:</b> {{user.html_url}}</li>
+      <li><button (click)="onClick(user)">Details</button>
+
+
+        <div *ngFor="let itemrepo of repodetails; let i = index">
+          <div *ngIf="user.login == itemrepo.owner.login">
+            <ul class="list-unstyled innerlist">
+              <li>{{i+1}} - {{itemrepo.full_name}}</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
